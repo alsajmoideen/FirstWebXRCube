@@ -9,7 +9,7 @@ async function createBird() {
   );
   const model = gltf_data.scene.children[0];
   model.position.set(0, 0, -0.5);
-  model.rotation.set(0, Math.PI + 0.3, 0);
+  model.rotation.set(0, 0.3, 0);
   model.scale.set(0.0025, 0.0025, 0.0025);
 
   const clip = gltf_data.animations[0];
