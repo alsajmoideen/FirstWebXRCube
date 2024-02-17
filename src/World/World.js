@@ -8,6 +8,7 @@ import { Loop } from "./System/Loop";
 import { createCube } from "./Components/Cube";
 import { createControls } from "./System/Controls";
 import { HemisphereLight } from "three";
+import { createBird } from "./Components/Bird";
 
 let camera;
 let renderer;
@@ -27,12 +28,18 @@ class World {
     var light = new HemisphereLight(0xffffff, 0xbbbbff, 1);
     light.position.set(0.5, 1, 0.25);
     scene.add(light);
-    
+
     loop = new Loop(camera, scene, renderer);
 
-    const cube = createCube();
-    loop.updatables.push(cube);
-    scene.add(cube);
+    // const cube = createCube();
+    // loop.updatables.push(cube);
+    // scene.add(cube);
+
+    (async () => {
+      const bird = await createBird();
+      scene.add(bird);
+      loop.updatables.push(bird);
+    })();
 
     const resizer = new Resizer(camera, renderer);
   }
